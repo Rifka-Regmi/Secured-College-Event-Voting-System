@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Voting System | Modern Secure Voting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --secondary: #1e40af;
+      --dark: #1f2937;
+      --light: #f3f4f6;
+      --accent: #3b82f6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    .nav-bar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 7rem 5% 5rem;
+      background: linear-gradient(135deg, #fff 0%, #f3f4f6 100%);
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 5rem 5%;
+      background: white;
+    }
+
+    .feature-card {
+      padding: 2rem;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .contact-section {
+      background: var(--dark);
+      color: white;
+      padding: 5rem 5%;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav-bar">
+    <div class="nav-content">
+      <div class="brand">E-Voting System</div>
+      <div class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Secure College Event Voting System</h1>
+        <p>Experience the future of voting with our advanced, secure, and user-friendly e-voting platform. Featuring face recognition and OTP verification for maximum security.</p>
+        <a href="../static/dashboard/Dashboard.html" class="cta-button">Get Started <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="hero-image">
+        <img src="../static/images/voting-hero.svg" alt="Voting Illustration">
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="feature-grid">
+    <div class="feature-card">
+      <i class="fas fa-shield-alt feature-icon"></i>
+      <h3>Two-Step Verification</h3>
+      <p>Enhanced security with face recognition and OTP verification ensures only authorized voters can participate.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-bolt feature-icon"></i>
+      <h3>Quick & Easy</h3>
+      <p>Cast your vote in just a few clicks while maintaining complete privacy and security.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-chart-line feature-icon"></i>
+      <h3>Real-time Monitoring</h3>
+      <p>Track voting progress and results in real-time with complete transparency.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-lock feature-icon"></i>
+      <h3>Data Privacy</h3>
+      <p>Advanced encryption ensures your vote remains confidential and tamper-proof.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <i class="fas fa-phone"></i>
+        <p>+977 9848564819</p>
+      </div>
+      <div class="contact-info">
+        <i class="fas fa-envelope"></i>
+        <p>csit@oic.edu.np</p>
+      </div>
+      <div class="contact-info">
+        <i class="fas fa-map-marker-alt"></i>
+        <p>Kathmandu, Nepal</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2024 Secured College Event Voting System. All rights reserved.</p>
+  </footer>
+
+  <script src="../static/stylesheets/app.js"></script>
+</body>
+
+</html>

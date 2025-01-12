@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up Verification</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #2980b9, #8e44ad);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        input {
+            padding: 12px;
+            margin: 15px 0;
+            width: 80%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #2980b9;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter OTP</h2>
+        <p>Please enter the OTP sent to your email</p>
+        <div id="messageBox" style="display: none;" class="message"></div>
+        <input type="text" id="otp" placeholder="Enter OTP">
+        <button id="verifyBtn" onclick="verifyOTP()">Verify</button>
+    </div>
+
+    <script>
+        let isProcessing = false;
+
+        function showMessage(message, isError) {
+            const messageBox = document.getElementById('messageBox');
+            messageBox.textContent = message;
+            messageBox.style.display = 'block';
+            messageBox.className = 'message ' + (isError ? 'error' : 'success');
+        }
+
+        function verifyOTP() {
+            if (isProcessing) return;
+            
+            const otp = document.getElementById('otp').value;
+            const verifyBtn = document.getElementById('verifyBtn');
+            
+            if (!otp) {
+                showMessage('Please enter OTP', true);
+                return;
+            }
+
+            isProcessing = true;
+            verifyBtn.disabled = true;
+            verifyBtn.textContent = 'Verifying...';
+
+            $.ajax({
+                url: '/signup-otp',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ otp: otp }),
+                success: function(response) {
+                    if(response.data === 1) {
+                        showMessage('Registration successful! Redirecting...', false);
+                        setTimeout(() => {
+                            window.location.href = response.redirect;
+                        }, 1500);
+                    } else {
+                        showMessage('Invalid OTP. Please try again.', true);
+                        isProcessing = false;
+                        verifyBtn.disabled = false;
+                        verifyBtn.textContent = 'Verify';
+                    }
+                },
+                error: function() {
+                    showMessage('An error occurred. Please try again.', true);
+                    isProcessing = false;
+                    verifyBtn.disabled = false;
+                    verifyBtn.textContent = 'Verify';
+                }
+            });
+        }
+
+        document.getElementById('otp').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                verifyOTP();
+            }
+        });
+    </script>
+</body>
+</html> 
